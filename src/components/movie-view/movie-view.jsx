@@ -1,7 +1,14 @@
+import { useParams } from "react-router";
+import { Link } from "react-router-dom";
 import "./movie-view.scss";
 
-export const MovieView = ({ movie, onBackClick }) => {
-    console.log(movie.actors);
+export const MovieView = ({ movies }) => {
+    console.log(movies.actors);
+
+    const { movieId } = useParams();
+
+    const movie = movies.find((b) => b.id === movieId);
+
     return (
         <div>
             <div>
@@ -31,13 +38,9 @@ export const MovieView = ({ movie, onBackClick }) => {
                 <span>Cast: </span>
                 <span>{movie.actors.join(', ')}</span>
             </div>
-            <button
-                onClick={onBackClick}
-                className="back-button"
-                style={{ cursor: "pointer" }}
-            >
-                Back
-            </button>
+            <Link to={`/`}>
+                <button className="back-button">Back</button>
+            </Link>
         </div>
     );
 };
