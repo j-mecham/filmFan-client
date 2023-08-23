@@ -40,6 +40,7 @@ export const SignupView = () => {
                 <Form.Label>Username:</Form.Label>.
                 <Form.Control
                     type="text"
+                    style={{ color: "white" }}
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                     required
@@ -50,6 +51,7 @@ export const SignupView = () => {
                 <Form.Label>Password:</Form.Label>
                 <Form.Control
                     type="password"
+                    style={{ color: "white" }}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
@@ -59,6 +61,7 @@ export const SignupView = () => {
                 <Form.Label>Email:</Form.Label>
                 <Form.Control
                     type="email"
+                    style={{ color: "white" }}
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
@@ -68,6 +71,7 @@ export const SignupView = () => {
                 <Form.Label>Birthday:</Form.Label>
                 <Form.Control
                     type="date"
+                    style={{ color: "white" }}
                     value={birthday}
                     onChange={(e) => setBirthday(e.target.value)}
                     required

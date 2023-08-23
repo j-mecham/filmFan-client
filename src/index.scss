@@ -1,4 +1,8 @@
-$primary: FireBrick;
-$body-bg: LightGray;
+$primary: #8b0000;
+$body-bg: #222222;
 
 @import '~bootstrap/scss/bootstrap.scss';
+
+* {
+    color: white;
+}

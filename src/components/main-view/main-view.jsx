@@ -15,6 +15,7 @@ export const MainView = () => {
     const [user, setUser] = useState(storedUser ? storedUser : null);
     const [token, setToken] = useState(storedToken ? storedToken : null);
     const [movies, setMovies] = useState([]);
+    const [viewMovies, setViewMovies] = useState(movies);
 
     useEffect(() => {
         if (!token) {
@@ -44,13 +45,27 @@ export const MainView = () => {
             });
     }, [token]);
 
+    useEffect(() => {
+        setViewMovies(movies);
+    }, [movies]);
+
     return (
         <BrowserRouter>
             <NavigationBar
                 user={user}
                 onLoggedOut={() => {
                     setUser(null);
+                    setToken(null);
+                    localStorage.clear("user", "token");
                 }}
+                onSearch={(query) => {
+                    setViewMovies(
+                        movies.filter((movie) =>
+                            movie.title.toLowerCase().includes(query.toLowerCase())
+                        )
+                    );
+                }}
+
             />
             <Row className="justify-content-md-center">
                 <Routes>
@@ -76,7 +91,10 @@ export const MainView = () => {
                                     <Navigate to="/" />
                                 ) : (
                                     <Col md={5}>
-                                        <LoginView onLoggedIn={(user) => setUser(user)} />
+                                        <LoginView onLoggedIn={(user, token) => {
+                                            setUser(user)
+                                            setToken(token)
+                                        }} />
                                     </Col>
                                 )}
                             </>
@@ -97,7 +115,7 @@ export const MainView = () => {
                                             user={user}
                                             token={token}
                                             setUser={setUser}
-                                            movie={movies}
+                                            movies={movies}
                                         //updatedUser={updatedUser}
                                         />
                                     </Col>
@@ -117,7 +135,12 @@ export const MainView = () => {
                                     <Col>The list is empty!</Col>
                                 ) : (
                                     <Col md={8}>
-                                        <MovieView movies={movies} />
+                                        <MovieView
+                                            movies={movies}
+                                            user={user}
+                                            setUser={setUser}
+                                            token={token}
+                                        />
                                     </Col>
                                 )}
                             </>
