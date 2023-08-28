@@ -13178,6 +13178,10 @@ textarea.form-control-lg {
   color: #fff;
 }
 
+input {
+  color-scheme: dark;
+}
+
 .back-button {
   color: #f5f5f5;
   background-color: #1e90ff;

@@ -2,7 +2,7 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-export const SignupView = () => {
+export const SignupView = ({ onLoggedIn }) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
@@ -27,7 +27,31 @@ export const SignupView = () => {
         }).then((response) => {
             if (response.ok) {
                 alert("Signup successful");
-                window.location.reload();
+                const loginData = {
+                    Username: username,
+                    Password: password
+                }
+                fetch("https://filmfanattic-8d1d52c1e608.herokuapp.com/login", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(loginData)
+                })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        console.log("Login response: ", data);
+                        if (data.user) {
+                            localStorage.setItem("user", JSON.stringify(data.user));
+                            localStorage.setItem("token", data.token);
+                            onLoggedIn(data.user, data.token);
+                        } else {
+                            alert("No such user");
+                        }
+                    })
+                    .catch((e) => {
+                        alert("Something went wrong");
+                    });
             } else {
                 alert("Signup failed");
             }
@@ -36,7 +60,7 @@ export const SignupView = () => {
 
     return (
         <Form onSubmit={handleSubmit}>
-            <Form.Group controlID="formUSername">
+            <Form.Group>
                 <Form.Label>Username:</Form.Label>.
                 <Form.Control
                     type="text"

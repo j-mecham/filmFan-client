@@ -72,7 +72,7 @@ export function ProfileView({ token, user, setUser, movies }) {
             </Row>
             <Row>
                 <Col className="mt-2">
-                    <h2>Your Favorite Movies</h2>
+                    <h2>Your Favorite Movies:</h2>
                 </Col>
                 <Row>
                     <FavoriteMovies

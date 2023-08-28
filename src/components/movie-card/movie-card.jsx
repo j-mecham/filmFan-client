@@ -10,9 +10,13 @@ export const MovieCard = ({ movie }) => {
             border="light"
         >
             <Card.Img variant="top" src={movie.image} />
-            <Card.Body>
-                <Card.Title>{movie.title}</Card.Title>
-                <Card.Text>{movie.director}</Card.Text>
+            <Card.Body
+                className="d-flex flex-column justify-content-between"
+            >
+                <div className="mb-2">
+                    <Card.Title>{movie.title}</Card.Title>
+                    <Card.Text>{movie.director}</Card.Text>
+                </div>
                 <Link to={`/movies/${encodeURIComponent(movie.id)}`}>
                     <Button
                         variant="primary"
