@@ -10,3 +10,10 @@ $body-bg: #222222;
 input {
     color-scheme: dark;
 }
+
+button {
+    background-color: $primary;
+    margin: 5px;
+    margin-top: 20px;
+    padding: 20px;
+}

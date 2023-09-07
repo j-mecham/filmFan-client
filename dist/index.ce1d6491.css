@@ -13182,12 +13182,30 @@ input {
   color-scheme: dark;
 }
 
+button {
+  background-color: #8b0000;
+  margin: 20px 5px 5px;
+  padding: 20px;
+}
+
 .back-button {
   color: #f5f5f5;
-  background-color: #1e90ff;
   border: none;
   border-radius: 4px;
   padding: 4px 12px;
+}
+
+.first {
+  padding-top: 0;
+}
+
+span {
+  padding-bottom: 20px;
+  font-size: large;
+}
+
+h4, Button {
+  padding-top: 20px;
 }
 
 /*# sourceMappingURL=index.ce1d6491.css.map */
