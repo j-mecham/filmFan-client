@@ -14,7 +14,7 @@ export function ProfileView({ token, user, setUser, movies }) {
 
     useEffect(() => {
         console.log("working")
-        fetch(process.env.REACT_APP_APIURL+"/users", {
+        fetch(`https://filmfanattic-8d1d52c1e608.herokuapp.com/users`, {
             headers: { Authorization: `Bearer ${token}` },
         })
             .then((response) => {

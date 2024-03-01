@@ -23,7 +23,7 @@ export const MainView = () => {
             return;
         }
 
-        fetch(process.env.REACT_APP_APIURL+"/movies", {
+        fetch("https://filmfanattic-8d1d52c1e608.herokuapp.com/movies", {
             headers: { Authorization: `Bearer ${token}` }
         })
             .then((response) => response.json())

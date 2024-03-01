@@ -12,7 +12,7 @@ export function UpdateUser({ profile, setUser, token }) {
     const handleUpdate = (e) => {
         e.preventDefault();
         fetch(
-            process.env.REACT_APP_APIURL+"/users/${profile.Username}",
+            `https://filmfanattic-8d1d52c1e608.herokuapp.com/users/${profile.Username}`,
             {
                 method: 'PUT',
                 headers: {

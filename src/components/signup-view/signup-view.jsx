@@ -18,7 +18,7 @@ export const SignupView = ({ onLoggedIn }) => {
             Birthday: birthday
         };
 
-        fetch(process.env.REACT_APP_APIURL+"/users", {
+        fetch("https://filmfanattic-8d1d52c1e608.herokuapp.com/users", {
             method: "POST",
             body: JSON.stringify(data),
             headers: {
@@ -31,7 +31,7 @@ export const SignupView = ({ onLoggedIn }) => {
                     Username: username,
                     Password: password
                 }
-                fetch(process.env.REACT_APP_APIURL+"/login", {
+                fetch("https://filmfanattic-8d1d52c1e608.herokuapp.com/login", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
